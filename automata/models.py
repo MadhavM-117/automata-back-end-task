@@ -6,9 +6,12 @@ TurnOption: TypeAlias = Literal["rock", "paper", "scissors", "lizard", "spock"]
 TurnOutcome: TypeAlias = Literal["win", "lose", "tie"]
 
 
-class InternalGameState(BaseModel):
+class DisplayGameState(BaseModel):
     username: Optional[str] = None
     score: int = 0
+
+
+class InternalGameState(DisplayGameState):
     turn_history: List[TurnOption] = []
 
 
