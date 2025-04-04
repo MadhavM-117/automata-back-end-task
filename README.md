@@ -1,4 +1,19 @@
 # Automata Backend Exercise
+
+## Install and execution
+
+```bash
+# requires python >= 3.10
+python3 -m venv .venv
+
+# activate venv, and install deps
+source .venv/bin/activate
+pip install -e .
+
+# run game
+python -m automata
+```
+
 ## Rock, Paper, Scissors, Lizard, Spock
 
 ## Overview
