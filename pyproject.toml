@@ -5,7 +5,9 @@ description = "Rock, Paper, Scissors, Lizard, Spock"
 authors = [
     {name = "Madhav M.", email = "madhavmanoj117@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+    "pydantic==2.11"
+]
 requires-python = ">=3.10"
 readme = "README.md"
 license = {text = "All rights reserved."}
