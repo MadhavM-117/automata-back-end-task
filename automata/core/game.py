@@ -109,6 +109,6 @@ def play_turn(
         game_state.score -= 1
 
     # Save the updated game state
-    save_game_state(game_state)
+    save_game_state(game_state=game_state)
 
     return result, game_state

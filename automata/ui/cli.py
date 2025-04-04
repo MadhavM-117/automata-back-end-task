@@ -43,7 +43,7 @@ def print_options() -> None:
     print("Q. Quit Game")
 
 
-def print_score(game_state: InternalGameState) -> None:
+def print_score(*, game_state: InternalGameState) -> None:
     """Print the current score."""
     username = game_state.username or "Player"
     print(f"Hello {username},")
@@ -85,19 +85,19 @@ def log_out_of_game() -> InternalGameState:
     """log_out the game, and start as a new user"""
     username = ask_for_username(None)
     new_state = InternalGameState(username=username, score=0, turn_history=[])
-    save_game_state(new_state)
+    save_game_state(game_state=new_state)
     return new_state
 
 
-def restart_game(game_state: InternalGameState) -> InternalGameState:
+def restart_game(*, game_state: InternalGameState) -> InternalGameState:
     """Restart the game with a fresh state, but same user"""
     username = game_state.username or ask_for_username(None)
     new_state = InternalGameState(username=username, score=0, turn_history=[])
-    save_game_state(new_state)
+    save_game_state(game_state=new_state)
     return new_state
 
 
-def display_result(result_text: str) -> None:
+def display_result(*, result_text: str) -> None:
     """Display the result of the turn with some visual emphasis."""
     print("\n" + "-" * get_screen_width())
     print(result_text)
@@ -111,21 +111,21 @@ def start_game() -> None:
     game_state = load_game_state()
 
     # If this is a new game, ask for username
-    if not game_state.username:
+    if game_state.username is None:
         game_state.username = ask_for_username(None)
-        save_game_state(game_state)
+        save_game_state(game_state=game_state)
 
     while True:
         clear_screen()
         print_title()
-        print_score(game_state)
+        print_score(game_state=game_state)
         print_options()
 
         player_choice = get_player_choice()
 
         # Restart the game if requested
         if player_choice == "restart":
-            game_state = restart_game(game_state)
+            game_state = restart_game(game_state=game_state)
             continue
 
         # Log out of the game if requested
@@ -145,4 +145,5 @@ def start_game() -> None:
             f"Computer's choice: {result.computer_choice}\n\n"
             f"{result.reason}"
         )
-        display_result(result_message)
+
+        display_result(result_text=result_message)

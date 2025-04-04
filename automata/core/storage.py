@@ -33,11 +33,13 @@ def load_game_state() -> InternalGameState:
     return game_state
 
 
-def save_game_state(game_state: InternalGameState) -> None:
+def save_game_state(*, game_state: InternalGameState) -> None:
     state_file = get_state_file_path()
+    print("save game to file", state_file, game_state.model_dump_json())
     with open(state_file, "w") as file:
         try:
             file.write(game_state.model_dump_json())
+            file.flush()
         except Exception:
             logger.error(
                 f"Unexpected error while saving state. {traceback.format_exc()}"

@@ -126,7 +126,7 @@ def test_save_game_state(mock_open_file):
     state = InternalGameState(
         score=10, turn_history=["rock", "paper", "scissors"], username="player1"
     )
-    save_game_state(state)
+    save_game_state(game_state=state)
 
     # Check that the correct JSON was written
     assert len(mock_open_file.written_content) == 1
@@ -141,7 +141,7 @@ def test_save_game_state_exception(mock_open_file, mock_logger):
     mock_open_file.write = write
     # Test exception handling when saving state
     state = InternalGameState(score=10, turn_history=["rock"], username="player1")
-    save_game_state(state)
+    save_game_state(game_state=state)
 
     # Should log error
     assert len(mock_logger.error_calls) == 1
