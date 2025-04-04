@@ -112,4 +112,3 @@ def play_turn(
     save_game_state(game_state)
 
     return result, game_state
-

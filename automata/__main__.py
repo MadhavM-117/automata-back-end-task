@@ -1,10 +1,12 @@
 from automata.logging import setup_logging
-
-setup_logging()
+from automata.ui.cli import start_game
 
 
 def main():
-    pass
+    setup_logging()
+    start_game()
 
 
-main()
+if __name__ == "__main__":
+    main()
+
