@@ -16,7 +16,7 @@ class InternalGameState(DisplayGameState):
 
 
 class TurnResult(BaseModel):
-    player_choice: TurnOption
-    computer_choice: TurnOption
+    player_choice: Optional[TurnOption]
+    computer_choice: Optional[TurnOption]
     outcome: TurnOutcome
     reason: str

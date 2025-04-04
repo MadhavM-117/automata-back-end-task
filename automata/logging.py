@@ -27,7 +27,7 @@ def setup_logging(log_file=None, log_level=logging.ERROR):
     )
 
 
-def get_logger(name="core", level: Optional[logging._Level] = None):
+def get_logger(name="core", level: Optional[int | str] = None):
     """
     Get a logger with the given name
     """

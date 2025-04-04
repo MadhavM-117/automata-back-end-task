@@ -82,10 +82,11 @@ def play_turn(
     *, player_choice: TurnOption, game_state: InternalGameState
 ) -> Tuple[TurnResult, InternalGameState]:
     """Play a turn and update the game state."""
+
     if not is_valid_turn(player_choice=player_choice):
         return TurnResult(
-            player_choice=player_choice,
-            computer_choice=player_choice,
+            player_choice=None,
+            computer_choice=None,
             outcome="tie",
             reason="No cheating this time! Be better.",
         ), game_state
